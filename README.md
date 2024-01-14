@@ -26,7 +26,7 @@ conda activate pdfchatbot
 pip install -r requirements.txt
 ```
 
-### Create a '.env' file in the root directory and add your Pinecone credentials as follows:
+### Create a `.env` file in the root directory and add your Pinecone credentials as follows:
 
 ```ini
 PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -43,3 +43,26 @@ llama-2-7b-chat.ggmlv3.q4_0.bin
 ## From the following link:
 https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/tree/main
 ```
+
+```bash
+# Run the following command
+python store_index.py
+```
+
+```bash
+# Finally run the following command
+python app.py
+```
+
+Now,
+```bash
+open up localhost:
+```
+
+### Techstack Used:
+
+- Python
+- LangChain
+- Flask
+- Meta Llama2
+- Pinecone
