@@ -1,7 +1,7 @@
 from langchain.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
-
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 # Extract data from the PDF
 def load_pdf(data):
@@ -24,4 +24,10 @@ def text_split(extracted_data):
 # download embedding model
 def download_hugging_face_embeddings():
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    return embeddings
+
+
+# download google embedding model
+def download_google_embedding_model():
+    embeddings=GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     return embeddings

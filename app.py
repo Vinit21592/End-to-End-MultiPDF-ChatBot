@@ -1,10 +1,11 @@
 from flask import Flask, render_template, jsonify, request
-from src.helper import download_hugging_face_embeddings
+from src.helper import download_hugging_face_embeddings, download_google_embedding_model
 from langchain.vectorstores import Pinecone
 import pinecone
 from langchain.prompts import PromptTemplate
 from langchain.llms import CTransformers
 from langchain.chains import RetrievalQA
+from langchain.llms import HuggingFaceHub
 from dotenv import load_dotenv
 from src.prompt import *
 import os
@@ -15,8 +16,10 @@ load_dotenv()
 
 PINECONE_API_KEY = os.environ.get('PINECONE_API_KEY')
 PINECONE_API_ENV = os.environ.get('PINECONE_API_ENV')
+HUGGINGFACEHUB_API_TOKEN = os.environ.get('HUGGINGFACEHUB_API_TOKEN')
 
 embeddings = download_hugging_face_embeddings()
+# embeddings = download_google_embedding_model()
 
 #Initializing the Pinecone
 pinecone.init(api_key=PINECONE_API_KEY,
@@ -30,10 +33,12 @@ docsearch=Pinecone.from_existing_index(index_name, embeddings)
 PROMPT=PromptTemplate(template=prompt_template, input_variables=["context", "question"])
 chain_type_kwargs={"prompt": PROMPT}
 
-llm=CTransformers(model="model/llama-2-7b-chat.ggmlv3.q4_0.bin",
-                  model_type="llama",
-                  config={'max_new_tokens':512,
-                          'temperature':0.8})
+#llm=CTransformers(model="model/llama-2-7b-chat.ggmlv3.q4_0.bin",
+                  #model_type="llama",
+                  #config={'max_new_tokens':512,
+                          #'temperature':0.8})
+
+llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":0.5, "max_length":512})
 
 qa=RetrievalQA.from_chain_type(
     llm=llm, 

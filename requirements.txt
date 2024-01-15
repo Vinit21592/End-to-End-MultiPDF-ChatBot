@@ -5,4 +5,7 @@ langchain==0.0.225
 flask
 pypdf
 python-dotenv
+google-generativeai
+langchain_google_genai
+huggingface-hub
 -e .

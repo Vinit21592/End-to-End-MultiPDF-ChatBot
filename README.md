@@ -13,7 +13,7 @@ Project repo: https://github.com/Vinit21592/End-to-End-MultiPDF-ChatBot.git
 ### STEP 01 - Create a conda environment after opening the repository
 
 ```bash
-conda create -n pdfchatbot python=3.8 -y
+conda create -n pdfchatbot python=3.9 -y
 ```
 
 ```bash
@@ -26,11 +26,12 @@ conda activate pdfchatbot
 pip install -r requirements.txt
 ```
 
-### Create a `.env` file in the root directory and add your Pinecone credentials as follows:
+### Create a `.env` file in the root directory and add your Pinecone, Huggingfacehub credentials as follows:
 
 ```ini
 PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 PINECONE_API_ENV = "xxxxxxxxxxxxxxxxxxxxxxxx"
+HUGGINGFACEHUB_API_TOKEN = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 ### Download the quantize model from the link provided in model folder & keep the model in the model directory:
@@ -64,5 +65,5 @@ open up localhost:
 - Python
 - LangChain
 - Flask
-- Meta Llama2
+- Meta Llama2 OR google/flan-t5-xxl
 - Pinecone
