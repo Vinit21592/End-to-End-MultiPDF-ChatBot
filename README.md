@@ -1,7 +1,7 @@
 # End-to-End-MultiPDF-ChatBot
 End to end multipdf chatbot application using langchain as framework and Pinecone as vectordb
 
-![Alt text](PDF-LangChain.jpg)
+![PDF-LangChain](https://github.com/Vinit21592/End-to-End-MultiPDF-ChatBot/assets/78821357/c73f1d85-8d6f-426c-af4c-ab103d962a30)
 
 # How to run?
 ### STEPS:
